@@ -1,10 +1,13 @@
 {
   "name": "random-wallpaper",
   "main": "./lib/main",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Display wallpaper on Atom.",
   "keywords": [
-    "wallpaper", "background", "auto change", "multiple images"
+    "wallpaper",
+    "background",
+    "auto change",
+    "multiple images"
   ],
   "repository": "https://github.com/muu/random-wallpaper",
   "license": "MIT",
