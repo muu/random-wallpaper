@@ -51,9 +51,9 @@ We made adjustments in the following environment and theme.
 ## サンプル (Sample)
 
 ### Dark Theme
-![Sample1 Dark](./screenshots/sample1-dark.png)
-![Sample2 Dark](./screenshots/sample2-dark.png)
+![Sample1 Dark](https://raw.githubusercontent.com/muu/random-wallpaper/master/screenshots/sample1-dark.jpg)
+![Sample2 Dark](https://raw.githubusercontent.com/muu/random-wallpaper/master/screenshots/sample2-dark.jpg)
 
 ### Light Theme
-![Sample1 Light](./screenshots/sample1-light.png)
-![Sample2 Light](./screenshots/sample2-light.png)
+![Sample1 Light](https://raw.githubusercontent.com/muu/random-wallpaper/master/screenshots/sample1-light.jpg)
+![Sample2 Light](https://raw.githubusercontent.com/muu/random-wallpaper/master/screenshots/sample2-light.jpg)
