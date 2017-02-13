@@ -254,7 +254,7 @@ module.exports =
         background: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
       }
       /* .selected & .list-item.active */
-      .selected::before, li.active {
+      .btn.selected, .selected::before, li.active {
         background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
       }
       ::-webkit-scrollbar {
