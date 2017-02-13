@@ -327,4 +327,8 @@ module.exports =
       .wrap-guide {
         background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
       }
+      /* button primary */
+      .btn-primary {
+        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
+      }
     """
