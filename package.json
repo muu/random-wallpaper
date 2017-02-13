@@ -1,7 +1,7 @@
 {
   "name": "random-wallpaper",
   "main": "./lib/main",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Display wallpaper on Atom.",
   "keywords": [
     "wallpaper",
