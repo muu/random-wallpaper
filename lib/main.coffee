@@ -276,4 +276,8 @@ module.exports =
       .markdown-preview {
         background-color: rgba(255, 255, 255, 0.7) !important;
       }
+      /* platformio-ide-terminal::cursor */
+      .terminal-view .terminal-cursor {
+        background-color: white !important;
+      }
     """
