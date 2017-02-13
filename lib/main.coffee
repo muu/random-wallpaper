@@ -282,7 +282,7 @@ module.exports =
         background: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
       }
       /* .selected & .list-item.active */
-      .btn.selected, .selected::before, li.active {
+      .btn.selected, .select-list li.selected, .selected::before, li.active {
         background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
       }
       ::-webkit-scrollbar {
@@ -306,7 +306,7 @@ module.exports =
         border-left: dotted 1px rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.edge_alpha}) !important;
         border-right: dotted 1px rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.edge_alpha}) !important;
       }
-      atom-overlay, .popover-list, option {
+      atom-overlay, .popover-list, option, .overlay {
         background-color: rgba(#{@style.wallpaper.r}, #{@style.wallpaper.g}, #{@style.wallpaper.b}, #{@style.wallpaper.alpha}) !important;
       }
       .markdown-preview {
