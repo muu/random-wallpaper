@@ -152,12 +152,10 @@ module.exports =
   hookUpdateConfig: ->
     @releaseUpdateConfig()
     @hook_update_config.randomWallpaper = atom.config.onDidChange 'random-wallpaper', (event) =>
-      console.log("call1")
       @readConfig()
       @insertWallpaper()
       @activateAutoChange()
     @hook_update_config.theme = atom.themes.onDidChangeActiveThemes =>
-      console.log("call2")
       @readConfig()
       @insertWallpaper()
       @activateAutoChange()
