@@ -244,9 +244,8 @@ module.exports =
         position: relative;
         background: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
       }
-      .tree-view .selected::before,
-      li.active > a,
-      .select-list ol.list-group li.selected {
+      /* .selected & .list-item.active */
+      .selected::before, li.active {
         background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
       }
       ::-webkit-scrollbar {
