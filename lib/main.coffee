@@ -63,6 +63,14 @@ module.exports =
       default: 0.7
       minimum: 0
       maximum: 1
+    lineCursorAlpha:
+      title: 'Line cursor Opacity (ラインカーソル不透明度)'
+      description: 'Sets the opacity of the line cursor. (ラインカーソルの不透明度を設定します)'
+      order: 9
+      type: 'number'
+      default: 0.05
+      minimum: 0
+      maximum: 1
 
   activate: ->
     @initVariables()
@@ -143,6 +151,7 @@ module.exports =
         g: highlight_color.green
         b: highlight_color.blue
         edge_alpha: atom.config.get('random-wallpaper.selectorEdgeAlpha')
+        line_cursor_alpha: atom.config.get('random-wallpaper.lineCursorAlpha')
 
   setCommands: ->
     atom.commands.add 'atom-workspace',
@@ -281,5 +290,13 @@ module.exports =
       }
       .xterm .terminal-cursor {
         background-color: white !important;
+      }
+      /* cursor line */
+      .cursor-line {
+        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.line_cursor_alpha}) !important;
+      }
+      /* wrap guide */
+      .wrap-guide {
+        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
       }
     """

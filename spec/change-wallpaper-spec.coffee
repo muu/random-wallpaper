@@ -136,6 +136,7 @@ describe "RandomWallpaper", ->
           'random-wallpaper.wallpaperAlpha': 0.1
           'random-wallpaper.highlightAlpha': 0.2
           'random-wallpaper.selectorEdgeAlpha': 0.3
+          'random-wallpaper.lineCursorAlpha': 0.05
         themes = ['UI Dark','Syntax Dark']
         spyOn(atom.config,"get").andCallFake (key) ->
           return config[key]
@@ -154,7 +155,7 @@ describe "RandomWallpaper", ->
         )
         expect(RandomWallpaper.style).toEqual(
           wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 }
-          highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3 }
+          highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (auto detect light theme)", ->
         themes[0] = 'UI Light'
@@ -167,7 +168,7 @@ describe "RandomWallpaper", ->
         )
         expect(RandomWallpaper.style).toEqual(
           wallpaper: { alpha: 1.0 - 0.1, r: 4, g: 5, b: 6 }
-          highlight: { alpha: 0.2,       r: 1, g: 2, b: 3 , edge_alpha: 0.3 }
+          highlight: { alpha: 0.2,       r: 1, g: 2, b: 3 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (auto detect dark and light theme)", ->
         themes[0] = 'UI Dark'
@@ -180,7 +181,7 @@ describe "RandomWallpaper", ->
         )
         expect(RandomWallpaper.style).toEqual(
           wallpaper: { alpha: 1.0 - 0.1, r: 4, g: 5, b: 6 }
-          highlight: { alpha: 0.2,       r: 1, g: 2, b: 3 , edge_alpha: 0.3 }
+          highlight: { alpha: 0.2,       r: 1, g: 2, b: 3 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (manual set dark theme)", ->
         themes[0] = 'UI Light'
@@ -194,7 +195,7 @@ describe "RandomWallpaper", ->
         )
         expect(RandomWallpaper.style).toEqual(
           wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 }
-          highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3 }
+          highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (manual set light theme)", ->
         themes[0] = 'UI Dark'
@@ -208,7 +209,7 @@ describe "RandomWallpaper", ->
         )
         expect(RandomWallpaper.style).toEqual(
           wallpaper: { alpha: 1.0 - 0.1, r: 4, g: 5, b: 6 }
-          highlight: { alpha: 0.2,       r: 1, g: 2, b: 3 , edge_alpha: 0.3 }
+          highlight: { alpha: 0.2,       r: 1, g: 2, b: 3 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (change glob pattern)", ->
         config["random-wallpaper.wallpaperFileGlob"] = "test2"
@@ -220,7 +221,7 @@ describe "RandomWallpaper", ->
         )
         expect(RandomWallpaper.style).toEqual(
           wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 }
-          highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3 }
+          highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (change interval seconds)", ->
         config["random-wallpaper.autoChangeIntervalSeconds"] = 9876
@@ -232,12 +233,13 @@ describe "RandomWallpaper", ->
         )
         expect(RandomWallpaper.style).toEqual(
           wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 }
-          highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3 }
+          highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (change alphas)", ->
         config['random-wallpaper.wallpaperAlpha'] = 0.4
         config['random-wallpaper.highlightAlpha'] = 0.5
         config['random-wallpaper.selectorEdgeAlpha'] = 0.6
+        config['random-wallpaper.lineCursorAlpha'] = 0.7
         RandomWallpaper.readConfig()
         expect(RandomWallpaper.settings).toEqual(
           wallpaperFileGlob: "test1"
@@ -246,7 +248,7 @@ describe "RandomWallpaper", ->
         )
         expect(RandomWallpaper.style).toEqual(
           wallpaper: { alpha: 1.0 - 0.4, r: 1, g: 2, b: 3 }
-          highlight: { alpha: 0.5,       r: 4, g: 5, b: 6 , edge_alpha: 0.6 }
+          highlight: { alpha: 0.5,       r: 4, g: 5, b: 6 , edge_alpha: 0.6, line_cursor_alpha: 0.7 }
         )
 
 
