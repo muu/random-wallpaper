@@ -137,6 +137,8 @@ describe "RandomWallpaper", ->
           'random-wallpaper.highlightAlpha': 0.2
           'random-wallpaper.selectorEdgeAlpha': 0.3
           'random-wallpaper.lineCursorAlpha': 0.05
+          'random-wallpaper.wallpaperSize': 'contain'
+          'random-wallpaper.wallpaperRepeat': 'no-repeat'
         themes = ['UI Dark','Syntax Dark']
         spyOn(atom.config,"get").andCallFake (key) ->
           return config[key]
@@ -154,7 +156,7 @@ describe "RandomWallpaper", ->
           themeDarkOrLight: "dark"
         )
         expect(RandomWallpaper.style).toEqual(
-          wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 }
+          wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 , size: 'contain', repeat: 'no-repeat' }
           highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (auto detect light theme)", ->
@@ -167,7 +169,7 @@ describe "RandomWallpaper", ->
           themeDarkOrLight: "light"
         )
         expect(RandomWallpaper.style).toEqual(
-          wallpaper: { alpha: 1.0 - 0.1, r: 4, g: 5, b: 6 }
+          wallpaper: { alpha: 1.0 - 0.1, r: 4, g: 5, b: 6 , size: 'contain', repeat: 'no-repeat' }
           highlight: { alpha: 0.2,       r: 1, g: 2, b: 3 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (auto detect dark and light theme)", ->
@@ -180,7 +182,7 @@ describe "RandomWallpaper", ->
           themeDarkOrLight: "light"
         )
         expect(RandomWallpaper.style).toEqual(
-          wallpaper: { alpha: 1.0 - 0.1, r: 4, g: 5, b: 6 }
+          wallpaper: { alpha: 1.0 - 0.1, r: 4, g: 5, b: 6 , size: 'contain', repeat: 'no-repeat' }
           highlight: { alpha: 0.2,       r: 1, g: 2, b: 3 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (manual set dark theme)", ->
@@ -194,7 +196,7 @@ describe "RandomWallpaper", ->
           themeDarkOrLight: "dark"
         )
         expect(RandomWallpaper.style).toEqual(
-          wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 }
+          wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 , size: 'contain', repeat: 'no-repeat' }
           highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (manual set light theme)", ->
@@ -208,7 +210,7 @@ describe "RandomWallpaper", ->
           themeDarkOrLight: "light"
         )
         expect(RandomWallpaper.style).toEqual(
-          wallpaper: { alpha: 1.0 - 0.1, r: 4, g: 5, b: 6 }
+          wallpaper: { alpha: 1.0 - 0.1, r: 4, g: 5, b: 6 , size: 'contain', repeat: 'no-repeat' }
           highlight: { alpha: 0.2,       r: 1, g: 2, b: 3 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (change glob pattern)", ->
@@ -220,7 +222,7 @@ describe "RandomWallpaper", ->
           themeDarkOrLight: "dark"
         )
         expect(RandomWallpaper.style).toEqual(
-          wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 }
+          wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 , size: 'contain', repeat: 'no-repeat' }
           highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (change interval seconds)", ->
@@ -232,7 +234,7 @@ describe "RandomWallpaper", ->
           themeDarkOrLight: "dark"
         )
         expect(RandomWallpaper.style).toEqual(
-          wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 }
+          wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 , size: 'contain', repeat: 'no-repeat' }
           highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
       it "was processed (change alphas)", ->
@@ -247,8 +249,32 @@ describe "RandomWallpaper", ->
           themeDarkOrLight: "dark"
         )
         expect(RandomWallpaper.style).toEqual(
-          wallpaper: { alpha: 1.0 - 0.4, r: 1, g: 2, b: 3 }
+          wallpaper: { alpha: 1.0 - 0.4, r: 1, g: 2, b: 3 , size: 'contain', repeat: 'no-repeat' }
           highlight: { alpha: 0.5,       r: 4, g: 5, b: 6 , edge_alpha: 0.6, line_cursor_alpha: 0.7 }
+        )
+      it "was processed (change wallpaper size)", ->
+        config['random-wallpaper.wallpaperSize'] = 'test-size'
+        RandomWallpaper.readConfig()
+        expect(RandomWallpaper.settings).toEqual(
+          wallpaperFileGlob: "test1"
+          autoChangeIntervalSeconds: 1234
+          themeDarkOrLight: "dark"
+        )
+        expect(RandomWallpaper.style).toEqual(
+          wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 , size: 'test-size', repeat: 'no-repeat' }
+          highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
+        )
+      it "was processed (change wallpaper repeat)", ->
+        config['random-wallpaper.wallpaperRepeat'] = 'test-repeat'
+        RandomWallpaper.readConfig()
+        expect(RandomWallpaper.settings).toEqual(
+          wallpaperFileGlob: "test1"
+          autoChangeIntervalSeconds: 1234
+          themeDarkOrLight: "dark"
+        )
+        expect(RandomWallpaper.style).toEqual(
+          wallpaper: { alpha: 1.0 - 0.1, r: 1, g: 2, b: 3 , size: 'contain', repeat: 'test-repeat' }
+          highlight: { alpha: 0.2,       r: 4, g: 5, b: 6 , edge_alpha: 0.3, line_cursor_alpha: 0.05 }
         )
 
 
@@ -440,3 +466,11 @@ describe "RandomWallpaper", ->
         expect(style).not.toBe("")
         expect(style).toBeTruthy()
         expect(style.length).toBeGreaterThan(0)
+      it "contains wallpaper size", ->
+        RandomWallpaper.style.wallpaper.size = 'test-wallpaper-size'
+        style = RandomWallpaper.generateStyle()
+        expect(style).toMatch(/\.random-wallpaper {[\s\n\r]+background: .*? fixed center center \/ test-wallpaper-size/)
+      it "contains wallpaper repeat", ->
+        RandomWallpaper.style.wallpaper.repeat = 'test-wallpaper-repeat'
+        style = RandomWallpaper.generateStyle()
+        expect(style).toMatch(/\.random-wallpaper {[\s\n\r]+background: test-wallpaper-repeat fixed center center \/ .*?/)

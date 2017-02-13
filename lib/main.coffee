@@ -5,13 +5,13 @@ module.exports =
     wallpaperFileGlob:
       title: 'Wallpaper Files (壁紙ファイル)'
       description: 'Set the wallpaper file in glob format. (壁紙ファイルをglob形式で設定します)'
-      order: 1
+      order: 10
       type: 'string'
       default: "#{process.env.HOME}/Pictures/**/*.?(png|jpg)"
     autoChangeIntervalSeconds:
       title: 'Automatic Switching Time (自動切替時間)'
       description: 'Set the time to switch automatically in seconds. (自動で切り替える時間を秒数で設定します)'
-      order: 2
+      order: 20
       type: 'integer'
       default: 1800
       minimum: 0
@@ -19,7 +19,7 @@ module.exports =
     themeDarkOrLight:
       title: 'Wallpaper Brightness (壁紙の明るさ)'
       description: 'Select the brightness of the wallpaper. (壁紙の明るさを選択します)'
-      order: 3
+      order: 30
       type: 'string'
       default: 'auto'
       enum: [
@@ -27,22 +27,48 @@ module.exports =
         {value: 'dark', description: 'Dark'}
         {value: 'light', description: 'Light'}
       ]
+    wallpaperSize:
+      title: 'Wallpaper Size (壁紙の大きさ)'
+      description: 'Sets the wallpaper size. (壁紙の大きさを設定します)'
+      order: 40
+      type: 'string'
+      default: 'contain'
+      enum: [
+        {value: 'auto', description: 'Auto'}
+        {value: 'cover', description: 'Cover'}
+        {value: 'contain', description: 'Contain'}
+        {value: '75%', description: '75%'}
+        {value: '50%', description: '50%'}
+        {value: '25%', description: '25%'}
+      ]
+    wallpaperRepeat:
+      title: 'Wallpaper repeat (壁紙の繰り返し)'
+      description: 'Sets the wallpaper repeat. (壁紙の繰り返しを設定します)'
+      order: 50
+      type: 'string'
+      default: 'repeat'
+      enum: [
+        {value: 'no-repeat', description: 'No Repeat'}
+        {value: 'repeat', description: 'Repeat All'}
+        {value: 'repeat-x', description: 'Repeat X Only'}
+        {value: 'repeat-y', description: 'Repeat Y Only'}
+      ]
     darkColor:
       title: 'Dark Color (Dark色)'
       description: 'Set the Dark color. (Dark色を設定します)'
-      order: 4
+      order: 60
       type: 'color'
       default: 'rgba(30,30,30)'
     lightColor:
       title: 'Light Color (Light色)'
       description: 'Set the Light color. (Light色を設定します)'
-      order: 5
+      order: 70
       type: 'color'
       default: 'rgba(255,255,255)'
     wallpaperAlpha:
       title: 'Wallpaper Opacity (壁紙不透明度)'
       description: 'Set wallpaper opacity. (壁紙の不透明度を設定します)'
-      order: 6
+      order: 80
       type: 'number'
       default: 0.1
       minimum: 0
@@ -50,7 +76,7 @@ module.exports =
     highlightAlpha:
       title: 'Highlight Opacity (ハイライト不透明度)'
       description: 'Set highlight opacity. (ハイライトの不透明度を設定します)'
-      order: 7
+      order: 90
       type: 'number'
       default: 0.2
       minimum: 0
@@ -58,7 +84,7 @@ module.exports =
     selectorEdgeAlpha:
       title: 'Selected Area Boundary Opacity (選択領域境界不透明度)'
       description: 'Sets the opacity of the selection area boundary. (選択領域の境界の不透明度を設定します)'
-      order: 8
+      order: 100
       type: 'number'
       default: 0.7
       minimum: 0
@@ -66,7 +92,7 @@ module.exports =
     lineCursorAlpha:
       title: 'Line cursor Opacity (ラインカーソル不透明度)'
       description: 'Sets the opacity of the line cursor. (ラインカーソルの不透明度を設定します)'
-      order: 9
+      order: 110
       type: 'number'
       default: 0.05
       minimum: 0
@@ -145,6 +171,8 @@ module.exports =
         r: wallpaper_color.red
         g: wallpaper_color.green
         b: wallpaper_color.blue
+        size: atom.config.get('random-wallpaper.wallpaperSize')
+        repeat: atom.config.get('random-wallpaper.wallpaperRepeat')
       highlight:
         alpha: atom.config.get('random-wallpaper.highlightAlpha')
         r: highlight_color.red
@@ -226,7 +254,7 @@ module.exports =
   generateStyle: ->
     """
       .random-wallpaper {
-        background: no-repeat fixed center center / cover;
+        background: #{@style.wallpaper.repeat} fixed center center / #{@style.wallpaper.size};
         transition: background 2s ease-in-out;
       }
       atom-panel-container,atom-pane-container {
