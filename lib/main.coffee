@@ -270,7 +270,7 @@ module.exports =
         border-left: dotted 1px rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.edge_alpha}) !important;
         border-right: dotted 1px rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.edge_alpha}) !important;
       }
-      atom-overlay, .popover-list {
+      atom-overlay, .popover-list, option {
         background-color: rgba(#{@style.wallpaper.r}, #{@style.wallpaper.g}, #{@style.wallpaper.b}, #{@style.wallpaper.alpha}) !important;
       }
       .markdown-preview {
