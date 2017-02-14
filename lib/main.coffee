@@ -263,26 +263,22 @@ module.exports =
       atom-panel-container *, atom-pane-container * {
         background: none !important;
       }
-      .tab, .tab *, .tab::before, .tab::after {
+      .tab-bar, .tab-bar::before, .tab-bar::after {
         background: none !important;
         border:none !important;
-        border-radius: 5px 5px 0 0 !important;
-        box-shadow: none !important;
-        -webkit-transform: none !important;
+      }
+      .tab {
+        border:none !important;
       }
       .tab::before, .tab::after {
         display: none;
       }
-      .tab * {
+      .tab > div {
         margin-left: 10px;
         margin-right: 10px;
       }
-      .tab.active {
-        position: relative;
-        background: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
-      }
-      /* .selected & .list-item.active */
-      .btn.selected, .select-list li.selected, .selected::before, li.active {
+      /* .selected & .active */
+      .btn.selected, .select-list li.selected, .selected::before, li.active, .tab.active {
         background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
       }
       ::-webkit-scrollbar {
