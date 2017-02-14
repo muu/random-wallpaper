@@ -257,74 +257,122 @@ module.exports =
         background: #{@style.wallpaper.repeat} fixed center center / #{@style.wallpaper.size};
         transition: background 2s ease-in-out;
       }
-      atom-panel-container,atom-pane-container {
-        background-color: rgba(#{@style.wallpaper.r}, #{@style.wallpaper.g}, #{@style.wallpaper.b}, #{@style.wallpaper.alpha}) !important;
+
+      /* container */
+      atom-panel-container,
+      atom-panel-container.left,
+      atom-panel-container.right,
+      atom-panel-container.header,
+      atom-panel-container.footer,
+      atom-pane-container {
+        background-image: none;
+        background-color: rgba(#{@style.wallpaper.r}, #{@style.wallpaper.g}, #{@style.wallpaper.b}, #{@style.wallpaper.alpha});
       }
-      atom-panel-container *, atom-pane-container * {
-        background: none !important;
+      atom-pane-container atom-pane,
+      atom-panel-container atom-panel,
+      atom-panel-container.header atom-panel,
+      atom-panel-container.footer atom-panel,
+      atom-panel-container.top atom-panel,
+      atom-panel-container.bottom atom-panel,
+      atom-panel-container.left atom-panel,
+      atom-panel-container.right atom-panel,
+      atom-panel-container.top .tool-panel,
+      atom-panel-container.bottom .tool-panel,
+      atom-panel-container.left .tool-panel,
+      atom-panel-container.right .tool-panel,
+      atom-panel-container.bottom header.header,
+      atom-pane-container atom-pane .item-views .pane-item,
+      atom-panel-container atom-panel .status-bar, /* for one-dark,light */
+      atom-pane-container atom-pane .item-views,
+      atom-pane-container atom-pane .pane-item {
+        background-image: none;
+        background-color: transparent;
       }
-      .tab-bar, .tab-bar::before, .tab-bar::after {
-        background: none !important;
-        border:none !important;
+
+      /* editor */
+      atom-text-editor {
+        background-image: none;
+        background-color: transparent;
       }
-      .tab {
-        border:none !important;
+      atom-text-editor .gutter-container .gutter {
+        background-image: none;
+        background-color: transparent;
       }
-      .tab::before, .tab::after {
+      atom-text-editor .cursor-line,
+      atom-text-editor .gutter-container .gutter .cursor-line {
+        background-image: none;
+        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.line_cursor_alpha});
+      }
+      atom-text-editor .selection .region {
+        background-image: none;
+        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha});
+        border-left: dotted 1px rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.edge_alpha});
+        border-right: dotted 1px rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.edge_alpha});
+      }
+
+      /* settings */
+      .settings-view .panels, /* for one-dark,light */
+      .settings-view .panels .panels-item, /* for atom-material */
+      .settings-view .config-menu /* for atom-dark,light */ {
+        background-image: none;
+        background-color: transparent;
+      }
+      .settings-view .panels .panels-item .package-card {
+        background-image: none;
+        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha});
+      }
+
+
+      /* tree-view */
+      .tree-view {
+        background-image: none;
+        background-color: transparent;
+      }
+
+      /* tabs */
+      .tab-bar {
+        background-image: none;
+        background-color: transparent;
+      }
+      .pane .tab-bar .tab .title, /* for one-dark,light */
+      .pane .tab-bar .tab.active .title, /* for one-dark,light */
+      .pane .tab-bar .tab {
+        border:none;
+        background-image: none;
+        background-color: transparent;
+      }
+      .pane .tab-bar .tab.active {
+        background-image: none;
+        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha});
+      }
+      .tab::before, .tab::after, .tab-bar::after {
+        /* for atom-dark,atom-light */
         display: none;
       }
       .tab > div {
+        /* for atom-dark,atom-light */
         margin-left: 10px;
         margin-right: 10px;
       }
-      /* .selected & .active */
-      .btn.selected, .select-list li.selected, .selected::before, li.active, .tab.active {
-        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
+
+      /* scrollbar */
+      .scrollbars-visible-always ::-webkit-scrollbar {
+        //background: none;
       }
-      ::-webkit-scrollbar {
-        background: none !important;
+      .scrollbars-visible-always ::-webkit-scrollbar-track {
+        background-image: none;
+        background-color: transparent;
       }
-      ::-webkit-scrollbar-track {
-        background: none !important;
+      .scrollbars-visible-always ::-webkit-scrollbar-thumb {
+        background-image: none;
+        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha});
       }
-      ::-webkit-scrollbar-thumb {
-        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
-        border:none !important;
+      .scrollbars-visible-always ::-webkit-scrollbar-thumb:window-inactive {
+        background-image: none;
+        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha});
       }
-      ::-webkit-scrollbar-thumb:window-inactive {
-        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
-      }
-      ::-webkit-scrollbar-corner {
-        background: none !important;
-      }
-      .editor .selection .region {
-        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
-        border-left: dotted 1px rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.edge_alpha}) !important;
-        border-right: dotted 1px rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.edge_alpha}) !important;
-      }
-      atom-overlay, .popover-list, option, .overlay {
-        background-color: rgba(#{@style.wallpaper.r}, #{@style.wallpaper.g}, #{@style.wallpaper.b}, #{@style.wallpaper.alpha}) !important;
-      }
-      .markdown-preview {
-        background-color: rgba(255, 255, 255, 0.7) !important;
-      }
-      /* terminal */
-      .xterm {
-        background-color: rgba(0,0,0,0.7) !important;
-      }
-      .xterm .terminal-cursor {
-        background-color: white !important;
-      }
-      /* cursor line */
-      .cursor-line {
-        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.line_cursor_alpha}) !important;
-      }
-      /* wrap guide */
-      .wrap-guide {
-        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
-      }
-      /* button primary */
-      .btn-primary {
-        background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha}) !important;
+      .scrollbars-visible-always ::-webkit-scrollbar-corner {
+        background-image: none;
+        background-color: transparent;
       }
     """
