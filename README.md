@@ -39,7 +39,7 @@ Please use user stylesheet (styles.less) if detail adjustment is necessary.
 
 We made adjustments in the following environment and theme.
 
-- Atom 1.14.1 x64 (Windows)
+- Atom 1.17.0 x64 (Windows)
 - Themes
   - Atom Dark (UI & Syntax)
   - Atom Light (UI & Syntax)

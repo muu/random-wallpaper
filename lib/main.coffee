@@ -322,9 +322,23 @@ module.exports =
         background-color: rgba(#{@style.highlight.r}, #{@style.highlight.g}, #{@style.highlight.b}, #{@style.highlight.alpha});
       }
 
+      /* dock */
+      .atom-dock-mask {
+        background-image: none;
+        background-color: transparent;
+      }
+      .atom-dock-mask atom-pane-container {
+        background-image: none;
+        background-color: transparent;
+      }
 
       /* tree-view */
+      atom-dock .tree-view,
       .tree-view {
+        background-image: none;
+        background-color: transparent;
+      }
+      .focusable-panel {
         background-image: none;
         background-color: transparent;
       }
